@@ -15,9 +15,12 @@
         </encoder>
     </appender>
 
-    <root level="INFO">
-        <appender-ref ref="STDOUT" />
+    <logger name="br.com.alura.logs.controller.CursoController" level="INFO" additivity="false">
         <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
     </root>
 
 </configuration>
