@@ -14,6 +14,7 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=h5UzM2kEnp8Q42
+      - POSTGRES_DATABASE=logsdb
       - APP_DB_USER=alura
       - APP_DB_PASS=nJ6vsW37rCd1v88
       - APP_DB_NAME=logsdb

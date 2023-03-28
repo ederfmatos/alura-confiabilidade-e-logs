@@ -44,17 +44,21 @@ public class CursoController {
 	 public ResponseEntity<Object> saveCurso(@RequestBody @Valid CursoDto cursoDto){
         log.info("Inserindo curso - [{}]", cursoDto);
 		if(cursoService.existsByNumeroMatricula(cursoDto.getNumeroMatricula())) {
+            log.warn("Matricula já em uso para [{}]", cursoDto);
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("O número de matricula do curso já esta em uso!");
 		}
 		
 		if(cursoService.existsByNumeroCurso(cursoDto.getNumeroCurso())) {
+            log.warn("Número de curso já em uso para [{}]", cursoDto);
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("O número do curso já esta em uso!");
 		}
 				
 		var cursoModel = new CursoModel();
 		BeanUtils.copyProperties(cursoDto, cursoModel);
 		cursoModel.setDataInscricao(LocalDateTime.now(ZoneId.of("UTC")));
-		return ResponseEntity.status(HttpStatus.CREATED).body(cursoService.save(cursoModel));
+        CursoModel model = cursoService.save(cursoModel);
+        log.info("Curso salvo com sucesso - [{}]", model);
+        return ResponseEntity.status(HttpStatus.CREATED).body(model);
 	}
 	
 	

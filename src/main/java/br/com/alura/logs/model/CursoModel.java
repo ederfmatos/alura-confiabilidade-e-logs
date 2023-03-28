@@ -2,6 +2,7 @@ package br.com.alura.logs.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.StringJoiner;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -117,5 +118,20 @@ public class CursoModel implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", CursoModel.class.getSimpleName() + "[", "]")
+				.add("id=" + id)
+				.add("numeroMatricula='" + numeroMatricula + "'")
+				.add("numeroCurso='" + numeroCurso + "'")
+				.add("nomeCurso='" + nomeCurso + "'")
+				.add("categoriaCurso='" + categoriaCurso + "'")
+				.add("preRequisito='" + preRequisito + "'")
+				.add("nomeProfessor='" + nomeProfessor + "'")
+				.add("periodoCurso='" + periodoCurso + "'")
+				.add("dataInscricao=" + dataInscricao)
+				.toString();
 	}
 }

@@ -2,6 +2,7 @@ package br.com.alura.logs.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.StringJoiner;
 
 public class CursoDto {
 	
@@ -82,5 +83,18 @@ public class CursoDto {
 	
 	public void setPeriodoCurso(String periodoCurso) {
 		this.periodoCurso = periodoCurso;
+	}
+
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", CursoDto.class.getSimpleName() + "[", "]")
+				.add("numeroMatricula='" + numeroMatricula + "'")
+				.add("numeroCurso='" + numeroCurso + "'")
+				.add("nomeCurso='" + nomeCurso + "'")
+				.add("categoriaCurso='" + categoriaCurso + "'")
+				.add("preRequisito='" + preRequisito + "'")
+				.add("nomeProfessor='" + nomeProfessor + "'")
+				.add("periodoCurso='" + periodoCurso + "'")
+				.toString();
 	}
 }
